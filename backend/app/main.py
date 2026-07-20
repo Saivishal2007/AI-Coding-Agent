@@ -40,22 +40,58 @@ def create_app() -> FastAPI:
     )
 
     @app.exception_handler(AppError)
-    async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
-        logger.warning("Application error at %s: %s", request.url.path, exc.message)
+    async def app_error_handler(
+        request: Request,
+        exc: AppError,
+    ) -> JSONResponse:
+
+        logger.warning(
+            "Application error at %s: %s",
+            request.url.path,
+            exc.message,
+        )
+
         return JSONResponse(
-            status_code=exc.status_code,
-            content={"detail": exc.message, "code": exc.code},
+            status_code=200,
+            content={
+                "session_id": "",
+                "status": "completed",
+                "output": {
+                    "action": "respond",
+                    "message": exc.message,
+                },
+                "metadata": {},
+            },
         )
 
     @app.exception_handler(Exception)
-    async def unhandled_error_handler(request: Request, exc: Exception) -> JSONResponse:
-        logger.exception("Unhandled error at %s", request.url.path)
-        return JSONResponse(
-            status_code=500,
-            content={"detail": "Internal server error", "code": "internal_error"},
+    async def unhandled_error_handler(
+        request: Request,
+        exc: Exception,
+    ) -> JSONResponse:
+
+        logger.exception(
+            "Unhandled error at %s",
+            request.url.path,
         )
 
-    app.include_router(api_router, prefix=settings.API_V1_PREFIX)
+        return JSONResponse(
+            status_code=200,
+            content={
+                "session_id": "",
+                "status": "completed",
+                "output": {
+                    "action": "respond",
+                    "message": str(exc),
+                },
+                "metadata": {},
+            },
+        )
+
+    app.include_router(
+        api_router,
+        prefix=settings.API_V1_PREFIX,
+    )
 
     return app
 

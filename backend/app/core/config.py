@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str = Field(default="change-me-in-production", min_length=16)
     BACKEND_CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173"
     AGENT_TIMEOUT_SECONDS: int = Field(default=30, ge=1, le=300)
+    GEMINI_API_KEY: str = ""
+    MODEL_NAME: str = "gemini-2.5-flash"
 
     model_config = SettingsConfigDict(
         env_file=".env",

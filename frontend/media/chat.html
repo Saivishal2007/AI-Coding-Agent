@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="chat.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="title">
+
+            🤖 AI Coding Agent
+
+            <span class="version">
+                v1.0
+            </span>
+
+        </div>
+
+        <button
+            id="clearChat"
+            class="clear-btn">
+
+            🗑 Clear
+
+        </button>
+
+    </div>
+
+    <div
+        id="statusBar"
+        class="status">
+
+        🟢 Ready
+
+    </div>
+
+    <div
+        id="chat"
+        class="chat-area">
+
+    </div>
+
+    <div
+        id="loading"
+        class="loading hidden">
+
+        <div class="spinner"></div>
+
+        <span id="loadingText">
+            Thinking...
+        </span>
+
+    </div>
+
+    <div class="input-area">
+
+        <textarea
+
+            id="prompt"
+
+            placeholder="Ask anything about your project..."
+
+            rows="4"
+
+        ></textarea>
+
+        <button
+            id="send">
+
+            Send
+
+        </button>
+
+    </div>
+
+    <div class="footer">
+
+        AI Coding Agent • VS Code Extension
+
+    </div>
+
+</div>
+
+<script src="chat.js"></script>
+
+</body>
+
+</html>

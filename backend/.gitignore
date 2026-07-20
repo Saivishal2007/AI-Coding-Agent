@@ -1,6 +1,9 @@
+# Environment
 .env
 .venv/
 venv/
+
+# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -9,3 +12,26 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+
+# Node
+node_modules/
+
+# AI backups
+.ai_backups/
+
+# Personal/Test files
+hello.py
+sample.py
+resume_formatted.tex
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
