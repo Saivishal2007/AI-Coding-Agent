@@ -41,7 +41,7 @@ class AgentService:
     def __init__(self):
         self.llm = LLMService()
 
-        root = str(Path(__file__).resolve().parents[3])
+        root = str(Path(__file__).resolve().parents[2])
 
         self.repository = RepositoryService(root)
         self.project_index = ProjectIndexService(root)
